@@ -241,6 +241,13 @@ public class CommentParser {
         final PgSchema schema = database.getSchema(schemaName);
 
         final PgRelation rel = schema.getRelation(relName);
+
+        if (rel == null) {
+            throw new ParserException(MessageFormat.format(
+                    "Cannot find relation ''{0}'' in schema ''{1}''",
+                    relName, schema.getName()));
+        }
+
         final PgColumn column = rel.getColumn(objectName);
 
         if (column == null) {
