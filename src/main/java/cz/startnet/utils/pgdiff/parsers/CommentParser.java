@@ -244,8 +244,9 @@ public class CommentParser {
 
         if (rel == null) {
             throw new ParserException(MessageFormat.format(
-                    "Cannot find relation ''{0}'' in schema ''{1}''",
-                    relName, schema.getName()));
+                    "Cannot find relation ''{0}'' in schema ''{1}''" +
+                        "(objectName: ''{2}'', relName: ''{3}'', schemaName: ''{4}'', columnName: ''{5}'')",
+                    relName, schema.getName(), objectName, relName, schemaName, columnName));
         }
 
         final PgColumn column = rel.getColumn(objectName);
